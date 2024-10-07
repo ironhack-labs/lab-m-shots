@@ -1,0 +1,55 @@
+Report on GPT Prompt Engineering Exercises
+
+Introduction
+
+This report presents the findings from three prompt engineering exercises conducted to explore the behavior of GPT models in different scenarios. The exercises involved creating prompts to simulate expertise in football, cars, and sentiment analysis. The objectives were to test the model’s responsiveness to varied prompts, identify any inconsistencies or inaccuracies in the outputs, and reflect on the learnings from these interactions.
+
+First Scenario: Football Expertise (One-Shot Prompt)
+
+Findings:
+
+	•	Accuracy: The model correctly identified AC Milan as the winner of the 2002–2003 UEFA Champions League.
+	•	Effectiveness of One-Shot Prompt: The single example in the prompt effectively established the context, enabling the model to provide an accurate response.
+	•	Hallucinations: No hallucinations were observed in this scenario.
+
+Second Scenario: Car Expertise (Few-Shot Prompt)
+
+Findings:
+
+	•	Inconsistency: The model provided two different answers upon repeated runs with the same prompt.
+	•	Interpretation Variance:
+	•	First Output: Mentioned the BelAZ 75710, which, while extremely large, is a mining truck and may not fit the typical definition of a commercial car.
+	•	Second Output: Cited the Rolls-Royce Phantom Extended Wheelbase, aligning more with luxury passenger vehicles.
+	•	Potential Issues: The variance suggests the model may struggle with ambiguous terms like “biggest car,” leading to inconsistent responses.
+	•	Hallucinations: No factual inaccuracies, but inconsistent interpretations were noted.
+
+Third Scenario: Sentiment Analysis (Few-Shot Prompt)
+
+Findings:
+
+	•	Misclassification: The sentiment expressed is arguably negative, as the speaker indicates an intention not to keep the product.
+	•	Possible Reasons: The model may have focused on the lack of explicit negative language and interpreted the act of giving it away as neutral.
+	•	Hallucinations: The model did not fabricate information but misclassified the sentiment.
+
+Variations That Didn’t Work Well
+
+	•	Second Scenario Inconsistency:
+	•	The model’s differing answers highlight a sensitivity to ambiguous questions.
+	•	Lack of specificity in the prompt may lead to varied interpretations.
+	•	Third Scenario Misclassification:
+	•	The model may require more nuanced examples to correctly interpret indirect negative sentiments.
+	•	Incorporating additional training examples with similar phrasing could improve accuracy.
+
+Learnings
+
+	•	Prompt Clarity Is Crucial: Ambiguous questions can lead to inconsistent or unexpected answers. Clear, specific prompts help guide the model more effectively.
+	•	Model Sensitivity to Wording: The model’s outputs can vary significantly with minor changes or due to inherent randomness in generation.
+	•	Importance of Diverse Examples: Providing a wider range of examples, especially for tasks like sentiment analysis, can enhance the model’s ability to generalize and interpret nuances.
+	•	Understanding Limitations: Recognizing that models may misinterpret or overlook subtle cues emphasizes the need for human oversight, especially in critical applications.
+
+Conclusion
+
+These exercises demonstrate both the capabilities and limitations of GPT models in handling varied prompts across different domains. 
+While the model can provide accurate and relevant information, as seen in the football scenario, inconsistencies and misclassifications 
+can occur due to ambiguous inputs or nuanced language. Effective prompt engineering, including clarity and diversity in examples, 
+is essential to improve the reliability of the model’s responses.
