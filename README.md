@@ -2,23 +2,33 @@
 
 # Lab | M-Shots
 
-## Getting Started
+This lab explores few-shot prompting techniques using the OpenAI API. See the full implementation in [lab-m-shots.ipynb](lab-m-shots.ipynb).
 
-Follow the instructions provided in the notebook.
+## What Was Done
 
-Read the instructions for each cell and provide your answers. Make sure to test your answers in each cell and save. Jupyter Notebook should automatically save your work progress. But it's a good idea to periodically save your work manually just in case.
+Three prompting strategies were implemented and compared across two domains:
 
-## Deliverables
+**F1 Championship Q&A** — used to illustrate the core concept:
+- Zero-shot: plain system prompt, no examples
+- One-shot: one Q&A pair embedded in the system prompt
+- Few-shot (2 shots): two Q&A pairs, first in system-prompt style, then using proper `user`/`assistant` role pairs
 
-- Downloaded notebook with your responses to each of the exercises.
+**Weather Forecast** — the exercise implementation:
+- Zero-shot: format specified via instructions only
+- One-shot: one example city forecast added
+- Few-shot (3 shots): three example city forecasts (Paris, Berlin, Tokyo) to reinforce format
 
+## What Worked
 
-## Submission
+- Even a single shot was enough for GPT-3.5 to reliably adopt the target output format
+- The role-based approach (`user`/`assistant` turns) produced cleaner learning than embedding examples in the system prompt
+- The weather few-shot correctly generalised format and summary style to unseen cities (Budapest)
+- Sentiment classification with 3 labelled examples correctly handled an ambiguous negative case
 
-- Upon completion, add your deliverables to git. 
-- Then commit git and push your branch to the remote.
-- Make a pull request and paste the PR link in the submission field in the Student Portal.
+## Key Learnings
 
-<br>
-
-**Good luck!**
+- **Zero-shot** produces correct answers but no format control; useful when structure doesn't matter
+- **One-shot** is usually sufficient for format adoption in large models — more shots have diminishing returns
+- **Role-based shots** (`user`/`assistant` pairs) are more effective than inline examples in the system prompt because they mimic a real conversation, which is the format the model was trained on
+- **Over-anchoring risk**: too many shots can reduce output variability and cause the model to repeat patterns mechanically rather than reason about the actual question
+- Context window cost is real — each shot consumes tokens on every request, so shot count should be the minimum needed
